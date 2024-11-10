@@ -1,1 +1,1 @@
-# VIX-Advanced
+# VIX Trading Strategy with Gamma Overlay
