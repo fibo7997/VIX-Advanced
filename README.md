@@ -22,13 +22,17 @@ Calculates a moving average and moving standard deviation of the VIX price, then
 2. Gamma Data Integration:
 
 Loads gamma data and interpolates it to match the frequency of VIX price data.
+
 Uses the most recent available gamma values to fill gaps, ensuring that gamma values are always available for each VIX data point.
+
 Adds a rate of change calculation for gamma to identify shifts in gamma levels.
 
 3. Trade Entry and Exit Logic:
 
 Entry: Trades are triggered when the VIX Z-score crosses the entry threshold. The strategy uses a short position if the Z-score is high and a long position if the Z-score is low.
+
 Position Sizing: Adjusts position sizes based on the gamma level. Higher gamma levels result in larger position sizes to capitalize on expected volatility.
+
 Exit: Exits are triggered when the Z-score reverts to within the exit threshold or if a take-profit or stop-loss condition is met.
 
 4. Visualization:
@@ -37,5 +41,7 @@ The strategy plots VIX prices, gamma levels, gamma rate of change, and trade ent
 
 Files
 strategy.py: Main script containing the trading strategy logic.
+
 Synthetic_Gamma_Data.csv: Gamma data file, containing date and gamma values (in billions).
+
 VIX_Gamma_Analysis.png: A saved visualization showing VIX prices, gamma levels, rate of change, and trade entry/exit points.
