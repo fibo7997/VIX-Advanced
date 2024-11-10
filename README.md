@@ -13,7 +13,6 @@ This strategy leverages VIX price data and daily gamma exposure data to make tra
    
 
 Strategy Details
-  Key Components
   
 1. VIX Data Processing:
 
