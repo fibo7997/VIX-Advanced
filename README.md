@@ -5,7 +5,7 @@ This repository contains a quantitative trading strategy built around the VIX (V
 ## Overview
 This strategy leverages VIX price data and daily gamma exposure data to make trading decisions. Key features of the strategy include:
 
-1. Gamma Overlay: Adjusts position sizes based on gamma levels. High gamma readings indicate a greater potential influence of market makers, so position sizes are increased when gamma is high.
+1. Gamma Overlay: Adjusts position sizes based on gamma levels. High gamma readings indicate a greater potential influence of market makers, so position sizes are increased for shorts, when gamma is high. When gamma is negative or low, we know we are in a unhedged market where more volatility is likely. So long vix signals will have more weight during high gamma, and shorts will have less weight.
    
 2. Z-score Triggering: Uses moving Z-score of the VIX price to identify entry and exit points based on statistical deviations.
 
