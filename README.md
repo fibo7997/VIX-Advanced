@@ -5,7 +5,7 @@ This repository contains a quantitative trading strategy built around the VIX (V
 ## Overview
 This strategy leverages VIX price data and daily gamma exposure data to make trading decisions. Key features of the strategy include:
 
-1. Gamma Overlay: Adjusts position sizes based on gamma levels. High gamma readings indicate a greater potential influence of market makers, so position sizes are increased for shorts, when gamma is high. When gamma is negative or low, we know we are in a unhedged market where more volatility is likely. So long vix signals will have more weight during high gamma, and shorts will have less weight.
+1. Gamma Overlay: Adjusts position sizes based on gamma levels. High gamma readings indicate a greater potential influence of market makers, so position sizes are increased for shorts (and reduced for longs), when gamma is high. When gamma is negative or low, we know we are in a unhedged market where more volatility is likely. So long vix signals will have more weight during this scenario, and shorts will have less weight.
    
 2. Z-score Triggering: Uses moving Z-score of the VIX price to identify entry and exit points based on statistical deviations.
 
@@ -17,6 +17,7 @@ This strategy leverages VIX price data and daily gamma exposure data to make tra
 ### 1. VIX Data Processing:
 
 -Requests VIX price data and computes hourly returns.
+
 -Calculates a moving average and moving standard deviation of the VIX price, then derives a Z-score for triggering trades.
 
 ### 2. Gamma Data Integration:
@@ -25,7 +26,6 @@ This strategy leverages VIX price data and daily gamma exposure data to make tra
 
 -Uses the most recent available gamma values to fill gaps, ensuring that gamma values are always available for each VIX data point.
 
--Adds a rate of change calculation for gamma to identify shifts in gamma levels.
 
 ### 3. Trade Entry and Exit Logic:
 
@@ -37,7 +37,7 @@ This strategy leverages VIX price data and daily gamma exposure data to make tra
 
 ### 4. Visualization:
 
-The strategy plots VIX prices, gamma levels, gamma rate of change, and trade entry/exit points. This visualization aids in analyzing how gamma affects trade timing and the accuracy of entries/exits.
+The strategy plots VIX prices, gamma levels, and trade entry/exit points. This visualization aids in analyzing how gamma affects trade timing and the accuracy of entries/exits.
 
 Files
 
@@ -46,3 +46,6 @@ Files
 -Synthetic_Gamma_Data.csv: Gamma data file, containing date and gamma values (in billions).
 
 -VIX_Gamma_Analysis.png: A saved visualization showing VIX prices, gamma levels, rate of change, and trade entry/exit points.
+
+### Limitations
+Due to the unavailability of expired options Greeks, I couldn't retrieve the data needed to calculate Gamma. To address this, I introduced a daily database sourced from ZeroHedge. Im further projects I will introduce the rate of change of Gamma (hourly data) to improve the precission of the weights assigned.
