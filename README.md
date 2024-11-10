@@ -31,7 +31,7 @@ This strategy leverages VIX price data and daily gamma exposure data to make tra
 
 -Entry: Trades are triggered when the VIX Z-score crosses the entry threshold. The strategy uses a short position if the Z-score is high and a long position if the Z-score is low.
 
--Position Sizing: Adjusts position sizes based on the gamma level. Higher gamma levels result in larger position sizes to capitalize on expected volatility.
+-Position Sizing: Adjusts position sizes based on the gamma level. Higher gamma levels result in larger position sizes for short vix signals, as we are in a low vol regime. When gamma is high and we have a long vix signal, the weight is reduced. 
 
 -Exit: Exits are triggered when the Z-score reverts to within the exit threshold or if a take-profit or stop-loss condition is met.
 
